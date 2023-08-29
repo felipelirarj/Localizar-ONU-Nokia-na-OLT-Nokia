@@ -2,7 +2,7 @@
 Module for open connection and send commands to OLT
 """
 from netmiko import ConnectHandler
-
+from src.app.nokia.commands import commands_ssh
 
 class ServiceLogin:
     """
@@ -47,14 +47,29 @@ class ServiceNokia:
         Search ONU in OLT
         """
         serial_parse = serial[4:].upper()
+        conn.send_config_set(commands_ssh['disable_alarms'])
+        search = conn.send_command(commands_ssh['list_onu'].format(serial_parse))
 
-        conn.send_config_set('environment inhibit-alarms')
-        pesquisa = conn.send_command(f'show equipment ont status pon | match exact:ALCL:{serial_parse}')
-
-        if f'{serial_parse}' in pesquisa:
-            posicao=(pesquisa.replace('=', '').replace('-', '').replace('index table', '').replace('ontsearchstring|ontidx', '').replace('+', ''))
-            print(f'ONU {serial} localizada na OLT')
-            print(posicao)
-
+        if serial_parse in search:
+            onu = search.split()
+            data = dict(
+                search_status=True,
+                serial=serial,
+                slot=onu[1].split('/')[2],
+                pon=onu[1].split('/')[3],
+                pos=onu[1].split('/')[4],
+                rx_power=onu[5],
+                state=onu[4]
+                )
+            return data
         else:
-            print(f'ONU {serial} nao localizada na OLT')
+            data = dict(
+                search_status=False,
+                serial=serial,
+                slot=None,
+                pon=None,
+                pos=None,
+                rx_power=None,
+                state=None
+                )
+            return data
