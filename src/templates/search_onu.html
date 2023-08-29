@@ -1,0 +1,71 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<h1 class="center-text">Buscar ONU pelo serial</h1>
+<br>
+
+<form action="/buscar_onu" method="post">
+    <div class="form-group row">
+      <label class="col-4 col-form-label" for="olt_ip">IP da OLT</label> 
+      <div class="col-8">
+        <div class="input-group">
+          <div class="input-group-prepend">
+            <div class="input-group-text">
+              <i class="fa fa-compress"></i>
+            </div>
+          </div> 
+          <input id="olt_ip" name="olt_ip" placeholder="EX. 192.168.0.1" type="text" class="form-control">
+        </div>
+      </div>
+    </div>
+    <div class="form-group row">
+      <label for="login_ssh" class="col-4 col-form-label">Login SSH</label> 
+      <div class="col-8">
+        <div class="input-group">
+          <div class="input-group-prepend">
+            <div class="input-group-text">
+              <i class="fa fa-user"></i>
+            </div>
+          </div> 
+          <input id="login_ssh" name="login_ssh" placeholder="Ex. isadmin" type="text" class="form-control">
+        </div>
+      </div>
+    </div>
+    <div class="form-group row">
+      <label for="ssh_pass" class="col-4 col-form-label">Senha SSH</label> 
+      <div class="col-8">
+        <div class="input-group">
+          <div class="input-group-prepend">
+            <div class="input-group-text">
+              <i class="fa fa-key"></i>
+            </div>
+          </div> 
+          <input id="ssh_pass" name="ssh_pass" placeholder="Ex password@year" type="text" class="form-control">
+        </div>
+      </div>
+    </div>
+    <div class="form-group row">
+      <label for="serial" class="col-4 col-form-label">Serial da ONU</label> 
+      <div class="col-8">
+        <div class="input-group">
+          <div class="input-group-prepend">
+            <div class="input-group-text">
+              <i class="fa fa-500px"></i>
+            </div>
+          </div> 
+          <input id="serial" name="serial" placeholder="EX. ALCLFC..." type="text" class="form-control">
+        </div>
+      </div>
+    </div> 
+    <div class="form-group row">
+      <div class="offset-4 col-8">
+        <button name="submit" type="submit" class="btn btn-primary">Buscar</button>
+      </div>
+    </div>
+  </form>
+
+  {% if onu is defined %}
+    <p>ONU Encontrada</p>
+  {%endif %}
+{% endblock %}

@@ -8,46 +8,47 @@
       <!-- Style CSS -->
       <link rel="stylesheet" href="/static/css/style.css">
 
-      <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
-
+      <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"> 
+      <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
 <link href="https://fonts.googleapis.com/css?family=Roboto&display=swap" rel="stylesheet">
    </head>
    <body>
-
-      <!--$%adsense%$-->
       <main class="cd__main">
-         <!-- Start DEMO HTML (Use the following code into your project)-->
          <aside>
-  <p> Menu </p>
-  <a href="javascript:void(0)">
+  <p> Nokia FTTH Tools </p>
+  <a href="/buscar_onu">
     <i class="fa fa-user-o" aria-hidden="true"></i>
-    My drive
+    Bucar ONU
   </a>
   <a href="javascript:void(0)">
     <i class="fa fa-laptop" aria-hidden="true"></i>
-    Computers
+    Not Implemented
   </a>
   <a href="javascript:void(0)">
     <i class="fa fa-clone" aria-hidden="true"></i>
-    Shared with me
+    Not Implemented
   </a>
   <a href="javascript:void(0)">
     <i class="fa fa-star-o" aria-hidden="true"></i>
-    Starred
+    Not Implemented
   </a>
   <a href="javascript:void(0)">
     <i class="fa fa-trash-o" aria-hidden="true"></i>
-    Trash
+    Not Implemented
   </a>
 </aside>
 
 <div class="social">
-  <a href="https://www.linkedin.com/in/florin-cornea-b5118057/" target="_blank">
+  <a href="https://www.linkedin.com/in/rhennancordeiro/" target="_blank">
     <i class="fa fa-linkedin"></i>
   </a>
 </div>
+  {% block title %}
+  {% endblock %}
+  <div class="container-content">
     {% block content %}
     {% endblock %}
+  </div>
 
       </main>
    </body>

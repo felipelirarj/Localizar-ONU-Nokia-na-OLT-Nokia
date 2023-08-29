@@ -14,7 +14,7 @@
  }
  
  aside a {
-   font-size: 12px;
+   font-size: 14px;
    color: #fff;
    display: block;
    padding: 12px;
@@ -78,14 +78,26 @@
  }
  
  .social i:before {
-   width: 14px;
-   height: 14px;
+   width: 30px;
+   height: 30px;
    font-size: 14px;
    position: fixed;
    color: #fff;
    background: #0077B5;
    padding: 10px;
    border-radius: 50%;
-   top:5px;
-   right:5px;
+   top:50px;
+   right:10px;
+ }
+ .container-content{
+
+    margin-top: 30px;
+    margin-left: 40vh;
+    max-width: 600px;
+ }
+ .center-text{
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    position: relative;
  }
