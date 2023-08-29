@@ -25,12 +25,13 @@ def search_onu():
         return render_template('search_onu.html')
     if request.method == 'POST':
         data = request.form
-        request_data = dict(
-            olt_ip=data.get('olt_ip'),
-            login_ssh=data.get('login_ssh'),
-            ssh_pass=data.get('ssh_pass'),
-            serial=data.get('serial')
-            )
+        request_data = {
+            "olt_ip": data.get('olt_ip'),
+            "login_ssh": data.get('login_ssh'),
+            "ssh_pass": data.get('ssh_pass'),
+            "serial": data.get('serial')
+        }
         response_request = FacadeNokia.search_onu(request_data)
         return render_template('search_onu.html',onu=response_request)
+    return render_template('search_onu.html')
     
