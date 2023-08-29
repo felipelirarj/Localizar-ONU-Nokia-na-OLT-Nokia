@@ -1,0 +1,12 @@
+on: push
+name: pylint_test
+jobs:
+    PythonPylinGitHubAction:
+      name: Python Pylint Github Action
+      runs-on: ubuntu-latest
+      steps:
+      - uses: actions/checkout@master
+      - name: Python Pylint Github Action
+        uses: fylein/python-pylint-github-action@master
+        with:
+          args: pip3 install -r requirements.txt && pylint --rcfile=.pylintrc src

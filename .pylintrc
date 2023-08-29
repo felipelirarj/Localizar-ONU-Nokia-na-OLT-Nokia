@@ -1,0 +1,7 @@
+[MASTER]
+fail-under=8.0
+reports=y
+recursive=y
+load-plugins=pylint.extensions.no_self_use,pylint_pydantic
+extension-pkg-allow-list=pydantic
+init-hook='from pylint.config import find_pylintrc; import sys'
