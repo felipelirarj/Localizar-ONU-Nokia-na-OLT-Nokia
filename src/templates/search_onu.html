@@ -1,0 +1,89 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<h1 class="center-text">Buscar ONU pelo serial</h1>
+<br>
+
+<form action="/buscar_onu" method="post">
+    <div class="form-group row">
+      <label class="col-4 col-form-label" for="olt_ip">IP da OLT</label> 
+      <div class="col-8">
+        <div class="input-group">
+          <div class="input-group-prepend">
+            <div class="input-group-text">
+              <i class="fa fa-compress"></i>
+            </div>
+          </div> 
+          <input id="olt_ip" name="olt_ip" placeholder="EX. 192.168.0.1" type="text" class="form-control" required>
+        </div>
+      </div>
+    </div>
+    <div class="form-group row">
+      <label for="login_ssh" class="col-4 col-form-label">Login SSH</label> 
+      <div class="col-8">
+        <div class="input-group">
+          <div class="input-group-prepend">
+            <div class="input-group-text">
+              <i class="fa fa-user"></i>
+            </div>
+          </div> 
+          <input id="login_ssh" name="login_ssh" placeholder="Ex. BigUser" type="text" class="form-control" required>
+        </div>
+      </div>
+    </div>
+    <div class="form-group row">
+      <label for="ssh_pass" class="col-4 col-form-label">Senha SSH</label> 
+      <div class="col-8">
+        <div class="input-group">
+          <div class="input-group-prepend">
+            <div class="input-group-text">
+              <i class="fa fa-key"></i>
+            </div>
+          </div> 
+          <input id="ssh_pass" name="ssh_pass" placeholder="Ex password@olt" type="password" class="form-control" required>
+        </div>
+      </div>
+    </div>
+    <div class="form-group row">
+      <label for="serial" class="col-4 col-form-label">Serial da ONU</label> 
+      <div class="col-8">
+        <div class="input-group">
+          <div class="input-group-prepend">
+            <div class="input-group-text">
+              <i class="fa fa-500px"></i>
+            </div>
+          </div> 
+          <input id="serial" name="serial" placeholder="EX. ALCLFC..." type="text" class="form-control" required>
+        </div>
+      </div>
+    </div> 
+    <div class="form-group row">
+      <div class="offset-4 col-8">
+        <button name="submit" type="submit" class="btn btn-primary">Buscar</button>
+      </div>
+    </div>
+  </form>
+
+  {% if onu is defined %}
+
+      <div class="card  " style="background-color:#dbe7ff;">
+        {% if onu.serial is defined %}
+        <div class="card-header">Encontrada {{ onu.serial }}</div>
+        {% else %}
+        <div class="card-header">Não encontrada{{ onu.serial }}</div>
+        {% endif %}
+        <div class="card-body">
+          <p class="card-text">
+            <p>Slot: {{ onu.slot }}</p>
+            <p>Pon: {{ onu.pon }}</p>
+            <p>Pos: {{ onu.pos }}</p>
+            <p>State: {{ onu.state }}</p>
+            <p>RX Power: {{ onu.rx_power }}</p>
+          </p>
+        </div>
+      </div
+  {% else %}
+    <p>ONU não encontrada</p>
+  {% endif %}
+{% endblock %}

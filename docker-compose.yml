@@ -1,0 +1,17 @@
+version: '3.7'
+
+services:
+  web:
+    build: .
+    command: flask --app /src/app/main.py run --host=0.0.0.0
+    volumes:
+      - ./src/:/src
+      - /etc/localtime:/etc/localtime:ro
+    ports:
+      - 5000:5000
+  
+
+# networks:
+#     default:
+#       name: develop
+#       external: true
